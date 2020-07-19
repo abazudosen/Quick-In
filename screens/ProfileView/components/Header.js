@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import {LinearGradient} from 'expo-linear-gradient'
 import {Ionicons, Entypo} from '@expo/vector-icons'
 import {gs, colors} from '../../../styles'
@@ -19,12 +19,22 @@ export default class Header extends Component {
 
                     <View style={styles.imageContainer}>
                         <View>
-                            <View styel={styles.check}>
+                            <View style={styles.check}>
                                 <Ionicons name="md-checkmark" size={20} color={colors.pink} />
                             </View>
 
                             <Image source={{uri: user.picture.large}} style={{width: 100, height: 100, borderRadius: 32}} />
                         </View>
+                    </View>
+
+                    <View style={[gs.center, {marginVertical: 12}]}>
+                        <Text style={gs.title}>{name}</Text>
+                        <Text style={[gs.subTitle, {marginTop: 8}]}>Photographer</Text>
+
+                        <TouchableOpacity style={styles.follow}>
+                            <Entypo name="plus" size={20} color='rgba(255, 255, 255, 0.6)' />
+                            <Text style={styles.followText}>Follow</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </LinearGradient>
@@ -33,7 +43,7 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-    image: {
+    imageContainer: {
         ...gs.center,
         marginTop: 16,
         shadowColor: colors.darkBg,
@@ -53,5 +63,20 @@ const styles = StyleSheet.create({
         zIndex: 1,
         right: -16,
         bottom: 16
+    },
+    follow: {
+        ...gs.button,
+        ...gs.rowCenter,
+        paddingHorizontal: 24,
+        paddingVertical: 8,
+        marginTop: 16,
+        borderColor: 'rgba(255, 255, 255, 0.5)',
+        borderWidth: 2
+    },
+    followText: {
+        fontSize: 16,
+        color: colors.text,
+        fontWeight: '600',
+        marginLeft: 4
     }
 })
