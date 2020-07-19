@@ -33,9 +33,9 @@ export default class index extends React.Component {
             )
         }
         return (
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <Header user={this.state.user} />
-            </ScrollView>
+            </View>
         );
     }
 }
